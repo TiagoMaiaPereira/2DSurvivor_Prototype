@@ -13,9 +13,8 @@ public class Movement : MonoBehaviour
     private Vector2 moveDirection;
 
 
-    [Header ("Input Actions")]
-    [SerializeField] private InputActionReference move;
-    [SerializeField] private InputActionReference dash;
+    //PlayerInput Read
+    private PlayerControlls playerInput;
     
 
     [Header ("Dash Settings")]
@@ -27,6 +26,7 @@ public class Movement : MonoBehaviour
 
     private void Awake()
     {
+        playerInput = new PlayerControlls();
         canDash = true;
         isDashing = false;
     }
@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        moveDirection = move.action.ReadValue<Vector2>();
+        moveDirection = playerInput.Gameplay.Move.ReadValue<Vector2>();
     }
 
     private void FixedUpdate()
@@ -54,13 +54,15 @@ public class Movement : MonoBehaviour
 
     private void OnEnable()
     {
-        dash.action.started += StartDash;
+        playerInput.Enable();
+        playerInput.Gameplay.Dash.started += StartDash;
 
     }
 
     private void OnDisable()
     {
-        dash.action.started -= StartDash;
+        playerInput.Disable();
+        playerInput.Gameplay.Dash.started -= StartDash;
     }
 
     private IEnumerator Dash() 

@@ -5,20 +5,26 @@ using UnityEngine.InputSystem;
 
 public class Interaction : MonoBehaviour
 {
-    [Header ("Input Actions")]
-    [SerializeField] private InputActionReference use;
+    private PlayerControlls playerControlls;
 
     [Header("Other Settings")]
     [SerializeField] private string logMessage;
 
+    private void Awake()
+    {
+        playerControlls = new PlayerControlls();
+    }
+
     private void OnEnable()
     {
-        use.action.started += Use;
+        playerControlls.Enable();
+        playerControlls.Gameplay.Use.started += Use;
     }
 
     private void OnDisable()
     {
-        use.action.started -= Use;
+        playerControlls.Disable();
+        playerControlls.Gameplay.Use.started -= Use;
     }
 
     private void Use(InputAction.CallbackContext obj)

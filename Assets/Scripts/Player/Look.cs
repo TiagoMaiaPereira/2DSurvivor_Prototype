@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,20 +9,36 @@ public class Look : MonoBehaviour
 
 
     private Vector2 pointerPosition;
+    private PlayerControlls playerControlls;
 
-    [Header ("Input Actions")]
-    [SerializeField] private InputActionReference look;
+
+    private void Awake()
+    {
+        playerControlls = new PlayerControlls();
+    }
+
+    private void OnEnable()
+    {
+        playerControlls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControlls.Disable();
+    }
+
     private void Update()
     {
-        pointerPosition = GetPointerInput();
+        pointerPosition = TurnPointer();
 
         transform.right = (pointerPosition - (Vector2)transform.position).normalized;
        
     }
 
-    private Vector2 GetPointerInput()
+
+    private Vector3 TurnPointer()
     {
-        Vector3 pointerRotation = look.action.ReadValue<Vector2>();
-        return Camera.main.ScreenToWorldPoint(pointerRotation);
+        Vector3 mousePos = playerControlls.Gameplay.Look.ReadValue<Vector2>();
+        return Camera.main.ScreenToWorldPoint(mousePos);
     }
 }

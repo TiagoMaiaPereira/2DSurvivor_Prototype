@@ -5,20 +5,26 @@ using UnityEngine.InputSystem;
 
 public class Shooting : MonoBehaviour
 {
-    [Header ("Input Actions")]
-    [SerializeField] private InputActionReference shoot;
+    private PlayerControlls playerControlls;
 
     [Header("Other Settings")]
     [SerializeField] private string logMessage;
 
+    private void Awake()
+    {
+        playerControlls = new PlayerControlls();
+    }
+
     private void OnEnable()
     {
-        shoot.action.started += Fire;
+        playerControlls.Enable();
+        playerControlls.Gameplay.Shoot.started += Fire;
     }
 
     private void OnDisable()
     {
-        shoot.action.started -=Fire;    
+        playerControlls.Disable();
+        playerControlls.Gameplay.Shoot.started -=Fire;    
     }
 
     private void Fire(InputAction.CallbackContext obj)

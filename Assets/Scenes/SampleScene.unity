@@ -318,7 +318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190717b2f3999274184ae76790ecd82d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  use: {fileID: -7054146658151699469, guid: fc845a31dc8b7c748af08a43cc583698, type: 3}
   logMessage: Interaction!
 --- !u!114 &497377524
 MonoBehaviour:
@@ -332,7 +331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f508f0dcd7f9d334c9e4345e6eb11040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoot: {fileID: -290550621047947748, guid: fc845a31dc8b7c748af08a43cc583698, type: 3}
   logMessage: Fire!
 --- !u!114 &497377525
 MonoBehaviour:
@@ -348,8 +346,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rb: {fileID: 497377517}
-  move: {fileID: -5493974997757036174, guid: fc845a31dc8b7c748af08a43cc583698, type: 3}
-  dash: {fileID: 4268803018827643808, guid: fc845a31dc8b7c748af08a43cc583698, type: 3}
   dashSpeed: 20
   dashCooldown: 1
   dashDuration: 0.25
@@ -769,7 +765,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32133ddfd3cf1fa41bb4ce6f4d6ef3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  look: {fileID: 5347600106360181560, guid: fc845a31dc8b7c748af08a43cc583698, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
