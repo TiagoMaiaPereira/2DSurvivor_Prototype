@@ -9,6 +9,9 @@ public class Shooting : MonoBehaviour
 
     [Header("Other Settings")]
     [SerializeField] private string logMessage;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private float bulletSpeed;
 
     private void Awake()
     {
@@ -30,5 +33,8 @@ public class Shooting : MonoBehaviour
     private void Fire(InputAction.CallbackContext obj)
     {
         Debug.Log(logMessage);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.right * bulletSpeed, ForceMode2D.Impulse);
     }
 }

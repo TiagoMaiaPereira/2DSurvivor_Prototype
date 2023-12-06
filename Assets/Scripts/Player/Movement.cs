@@ -72,7 +72,6 @@ public class Movement : MonoBehaviour
         rb.velocity= new Vector2(moveDirection.x * dashSpeed, moveDirection.y * dashSpeed);
        
         yield return new WaitForSeconds(dashDuration);
-
         isDashing = false;
 
         yield return new WaitForSeconds(dashCooldown);
