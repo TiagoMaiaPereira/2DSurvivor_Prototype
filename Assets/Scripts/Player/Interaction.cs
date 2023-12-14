@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Interaction : MonoBehaviour
 {
     private PlayerControlls playerControlls;
+    private IInteractable _interactableObject;
 
     [Header("Other Settings")]
     [SerializeField] private string logMessage;
@@ -29,6 +30,14 @@ public class Interaction : MonoBehaviour
 
     private void Use(InputAction.CallbackContext obj)
     {
-        Debug.Log(logMessage);
+        if(_interactableObject != null)
+        {
+            _interactableObject.Interact();
+        }
+    }
+
+    public void SetInteractable(IInteractable interactable)
+    {
+        _interactableObject = interactable;
     }
 }
