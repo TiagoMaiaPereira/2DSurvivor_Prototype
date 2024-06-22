@@ -6,10 +6,11 @@ public class Bullet : MonoBehaviour
 {
 
     [SerializeField] private int damage = 10;
+    [SerializeField] private float lifeTime = 4f;
 
     private void Start()
     {
-        Destroy(gameObject, 4f);
+        Destroy(gameObject, lifeTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
