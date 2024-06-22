@@ -5,6 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
+    [SerializeField] private int damage = 10;
+
     private void Start()
     {
         Destroy(gameObject, 4f);
@@ -14,7 +16,9 @@ public class Bullet : MonoBehaviour
     {
         GameObject target = collision.gameObject;
 
-        target.GetComponent<Health>().Damage(10);
+        if (target.CompareTag("Damageable")){
+            target.GetComponent<Health>().Damage(damage);
+        }
 
         Destroy (gameObject);
     }
